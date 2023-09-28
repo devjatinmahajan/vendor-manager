@@ -30,15 +30,25 @@ import { Input } from "@/components/ui/input";
 import React from "react";
 import { Plus } from "lucide-react";
 import NewVendorForm from "./new-vendor-form";
+import { Vendor } from "@/data/vendor-details";
+import { UseMutationResult } from "react-query";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  onAddVendor: (vendor: Vendor) => void;
+  addVendorMutation: UseMutationResult<Vendor, unknown, Vendor, unknown>;
+  dialogOpen: boolean;
+  setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  onAddVendor,
+  addVendorMutation,
+  dialogOpen,
+  setDialogOpen,
 }: DataTableProps<TData, TValue>) {
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -66,7 +76,7 @@ export function DataTable<TData, TValue>({
           }
           className="max-w-sm"
         />
-        <Dialog>
+        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger className="flex items-center gap-2 bg-gray-100 p-2 rounded-lg hover:bg-gray-200">
             <Plus className="h-4 w-4 mt-[1px]" />{" "}
             <span className="text-sm">Add New Vendor</span>
@@ -79,7 +89,11 @@ export function DataTable<TData, TValue>({
                 account and remove your data from our servers.
               </DialogDescription>
             </DialogHeader>
-            <NewVendorForm />
+            <NewVendorForm
+              edit={false}
+              onAddVendor={onAddVendor}
+              addVendorMutation={addVendorMutation}
+            />
           </DialogContent>
         </Dialog>
       </div>
