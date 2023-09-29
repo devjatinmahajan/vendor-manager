@@ -1,5 +1,6 @@
 export type Vendor = {
-  id: string,
+  _id?: string,
+  id?: string,
   name: string,
   accountNumber: string,
   bankName: string,
