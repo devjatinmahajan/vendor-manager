@@ -1,0 +1,5 @@
+1. Create Vendor: Vendor Name*, Bank Account No*., Bank Name*, Address Line 1, Address Line 2, City, Country, Zip Code.
+2. Display paginated list of vendors: Vendor Name, Bank Account No., Bank Name, Edit (link) / Delete (link).
+3. Edit: Load vendor details on edit vendor screen. Update on submit.
+4. Delete: Delete vendor after confirmation.
+*Mandatory fields.
