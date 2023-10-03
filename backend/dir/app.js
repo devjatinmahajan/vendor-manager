@@ -22,7 +22,7 @@ app.use("/api", vendorRoutes_1.default);
 if (process.env.NODE_ENV === "production") {
     app.use(express_1.default.static(path_1.default.join(path_1.default.resolve(), "/frontend/dist")));
     app.get("*", (req, res, next) => {
-        res.sendFile(path_1.default.join(path_1.default.resolve(), "/frontend/index.html"));
+        res.sendFile(path_1.default.join(path_1.default.resolve(), "/frontend/dist/index.html"));
     });
 }
 app.listen(process.env.PORT || 8080);

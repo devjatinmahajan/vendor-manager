@@ -23,7 +23,7 @@ app.use("/api", vendorRouter);
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(path.resolve(), "/frontend/dist")));
     app.get("*", (req, res, next) => {
-        res.sendFile(path.join(path.resolve(), "/frontend/index.html"));
+        res.sendFile(path.join(path.resolve(), "/frontend/dist/index.html"));
     });
 }
 
