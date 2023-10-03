@@ -14,6 +14,7 @@ frontend/dist
 frontend/dist-ssr
 frontend/build
 build
+/vercel.json
 *.local
 
 # Editor directories and files
