@@ -19,13 +19,18 @@ import {
 import { Button } from "../ui/button";
 import { MoreHorizontal } from "lucide-react";
 import NewVendorForm from "./new-vendor-form";
+import { UseMutationResult } from "react-query";
 
 interface CreateColumnsProps {
   onDeleteVendor: (vendorId: string) => void;
+  onUpdateVendor: (vendor: Vendor) => void;
+  updateVendorMutation: UseMutationResult<Vendor, unknown, Vendor, unknown>;
 }
 
 export function columns({
   onDeleteVendor,
+  onUpdateVendor,
+  updateVendorMutation,
 }: CreateColumnsProps): ColumnDef<Vendor>[] {
   return [
     {
@@ -89,7 +94,7 @@ export function columns({
                 </DialogTrigger>
                 <DropdownMenuItem
                   className="text-red-600"
-                  onClick={() => onDeleteVendor(row.original.id)}
+                  onClick={() => onDeleteVendor(row.original._id!)}
                 >
                   Delete
                 </DropdownMenuItem>
@@ -103,7 +108,12 @@ export function columns({
                   permanently delete this file from our servers?
                 </DialogDescription>
               </DialogHeader>
-              <NewVendorForm />
+              <NewVendorForm
+                edit={true}
+                onUpdateVendor={onUpdateVendor}
+                updateVendorMutation={updateVendorMutation}
+                row={row.original}
+              />
             </DialogContent>
           </Dialog>
         );
