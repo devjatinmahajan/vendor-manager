@@ -47,8 +47,6 @@ export default function NewVendorForm({
     { id: "zipcode", label: "Zip", defaultValue: row?.zipcode?.toString() },
   ];
 
-  console.log(row, edit);
-
   const [formData, setFormData] = useState<{ [key: string]: string }>({});
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -73,7 +71,6 @@ export default function NewVendorForm({
       newVendor._id = row?._id;
       if (onUpdateVendor) onUpdateVendor(newVendor);
     }
-    console.log(formData);
   };
 
   return (

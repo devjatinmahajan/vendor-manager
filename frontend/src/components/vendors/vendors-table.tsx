@@ -37,7 +37,6 @@ export default function VendorsTable() {
   });
   if (isLoading) return "Loading...";
   if (error) return "An error has occurred: " + error;
-  console.log(addVendorMutation.isLoading);
 
   const handleAddVendor = async (newVendor: Vendor) => {
     try {

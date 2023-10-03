@@ -23,5 +23,5 @@ app.listen(8000);
 mongoose
     .connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.9s9ex2a.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}?retryWrites=true&w=majority`)
     .then(() => {
-    const server = app.listen(process.env.PORT || 8080);
-});
+        const server = app.listen(process.env.PORT || 8080);
+    });

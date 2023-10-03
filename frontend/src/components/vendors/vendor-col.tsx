@@ -100,12 +100,12 @@ export function columns({
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            <DialogContent>
+            <DialogContent className="overflow-y-scroll">
               <DialogHeader>
-                <DialogTitle>Are you sure absolutely sure?</DialogTitle>
+                <DialogTitle>Edit the details of the Vendor</DialogTitle>
                 <DialogDescription>
-                  This action cannot be undone. Are you sure you want to
-                  permanently delete this file from our servers?
+                  The first three fields are required by default to ensure the
+                  proper entry on saving.
                 </DialogDescription>
               </DialogHeader>
               <NewVendorForm

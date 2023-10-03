@@ -67,7 +67,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div>
-      <div className="flex items-center py-4 justify-between">
+      <div className="flex items-center gap-12 py-4 justify-between">
         <Input
           placeholder="Filter by name..."
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
@@ -79,14 +79,16 @@ export function DataTable<TData, TValue>({
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger className="flex items-center gap-2 bg-gray-100 p-2 rounded-lg hover:bg-gray-200">
             <Plus className="h-4 w-4 mt-[1px]" />{" "}
-            <span className="text-sm">Add New Vendor</span>
+            <span className="text-sm hidden md:inline-block">
+              Add New Vendor
+            </span>
           </DialogTrigger>
           <DialogContent className="overflow-y-scroll">
             <DialogHeader>
               <DialogTitle>Fill the details of Vendor</DialogTitle>
               <DialogDescription>
-                This action cannot be undone. This will permanently delete your
-                account and remove your data from our servers.
+                The first three fields are required by default to ensure the
+                proper entry on saving.
               </DialogDescription>
             </DialogHeader>
             <NewVendorForm

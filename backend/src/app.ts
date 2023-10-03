@@ -9,7 +9,7 @@ dotenv.config({ path: path.join(__dirname, "../", ".env") })
 app.use(express.json());
 
 app.use((req, res, next) => {
-    console.log("In", process.env.MONGO_USER)
+    console.log("Request is made")
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
         "Access-Control-Allow-Methods",
@@ -18,9 +18,16 @@ app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
     next();
 });
-app.use("/api", vendorRouter)
+app.use("/api", vendorRouter);
 
-app.listen(8000)
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(path.resolve(), "/frontend/build")));
+    app.get("*", (req, res, next) => {
+        res.sendFile(path.join(path.resolve(), "/frontend/build/index.html"));
+    });
+}
+
+app.listen(process.env.PORT || 8080);
 
 mongoose
     .connect(

@@ -1,5 +1,6 @@
 import { Vendor } from "@/data/vendor-details";
 const BACKEND_URL = "http://localhost:8000"
+// const BACKEND_URL = "http://192.168.18.5:8000"
 
 // Fetch vendors
 const fetchVendors = async () => {
@@ -18,7 +19,6 @@ const addVendor = async (newVendor: Vendor) => {
     });
 
     if (!response.ok) {
-        console.log("Add success")
         throw new Error("Error adding vendor");
     }
 
