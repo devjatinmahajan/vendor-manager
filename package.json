@@ -11,7 +11,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon backend/dir/app.js"
+    "dev": "nodemon backend/dir/app.js",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
