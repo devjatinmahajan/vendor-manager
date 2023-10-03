@@ -28,5 +28,5 @@ const vendorSchema = new mongoose.Schema({
     zipcode: {
         type: String,
     },
-});
+}, { timestamps: true });
 exports.default = mongoose.model("Vendor", vendorSchema);

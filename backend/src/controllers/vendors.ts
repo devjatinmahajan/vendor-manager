@@ -24,7 +24,8 @@ export const createNewVendor = errHandler(async (req: Request, res: Response, ne
 });
 
 export const updateVendor = errHandler(async (req: Request, res: Response, next: NextFunction) => {
-    const { id, name, accountNumber, bankName, address1, address2, city, country, zipcode }: {
+    const { _id, id, name, accountNumber, bankName, address1, address2, city, country, zipcode }: {
+        _id: string,
         id: string,
         name: string,
         accountNumber: string,
@@ -36,26 +37,27 @@ export const updateVendor = errHandler(async (req: Request, res: Response, next:
         zipcode: number
     } = req.body;
 
-    const vendor = await vendorModel.findById(id);
+    const vendor = await vendorModel.findById(_id);
     if (!vendor) {
         return res.status(404).json({ message: "Vendor not found" });
     }
 
+    vendor.id = id || vendor.id;
     vendor.name = name || vendor.name;
-    vendor.account = accountNumber || vendor.account;
-    vendor.bank = bankName || vendor.bank;
+    vendor.accountNumber = accountNumber || vendor.accountNumber;
+    vendor.bankName = bankName || vendor.bankName;
     vendor.address1 = address1 || vendor.address1;
     vendor.address2 = address2 || vendor.address2;
     vendor.city = city || vendor.city;
     vendor.country = country || vendor.country;
-    vendor.zip = zipcode || vendor.zip;
+    vendor.zipcode = zipcode || vendor.zipcode;
 
     await vendor.save();
     res.status(200).json({ message: "Vendor updated successfully", vendor });
 });
 
 export const deleteVendorById = errHandler(async (req: Request, res: Response, next: NextFunction) => {
-    const { id }: { id: string } = req.body;
-    const response = await vendorModel.deleteOne({ _id: id });
+    const { _id }: { _id: string } = req.body;
+    const response = await vendorModel.deleteOne({ _id });
     res.status(200).json({ response })
 })
