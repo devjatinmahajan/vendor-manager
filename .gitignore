@@ -10,8 +10,10 @@ lerna-debug.log*
 node_modules
 backend/.env
 frontend/node_modules
-dist
-dist-ssr
+frontend/dist
+frontend/dist-ssr
+frontend/build
+build
 *.local
 
 # Editor directories and files
