@@ -17,7 +17,7 @@
       "destination": "/backend/dir/app.js"
     },
     {
-      "src": "/(.*)",
+      "source": "/(.*)",
       "dest": "./frontend/dist/index.html"
     }
   ]
