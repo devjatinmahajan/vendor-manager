@@ -1,5 +1,5 @@
 import { Vendor } from "@/data/vendor-details";
-const BACKEND_URL = "https://vendor-manager-umber.vercel.app"
+const BACKEND_URL = "https://vendor-manager-rho.vercel.app"
 // const BACKEND_URL = "http://localhost:8000"
 // const BACKEND_URL = "http://192.168.18.5:8000"
 
